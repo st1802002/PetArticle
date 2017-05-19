@@ -8,8 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		10333B911EBF6F5D003A5825 /* memberIdCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10333B901EBF6F5D003A5825 /* memberIdCache.swift */; };
+		1055D2461ECC89EC0091D2CD /* MyAdoptionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1055D2451ECC89EC0091D2CD /* MyAdoptionTableViewController.swift */; };
+		1055D24A1ECC92380091D2CD /* MyAdoptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1055D2491ECC92380091D2CD /* MyAdoptionTableViewCell.swift */; };
+		105F1B701ECC0456001F8D13 /* AddAdoptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105F1B6F1ECC0456001F8D13 /* AddAdoptionViewController.swift */; };
+		105F1B721ECC3A26001F8D13 /* AdoptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105F1B711ECC3A26001F8D13 /* AdoptionTableViewCell.swift */; };
+		105F1B741ECC4568001F8D13 /* AdoptionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105F1B731ECC4568001F8D13 /* AdoptionDetailViewController.swift */; };
 		1067F3841EC2F1380071C39C /* AdoptionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1067F3831EC2F1380071C39C /* AdoptionTableViewController.swift */; };
-		1067F38A1EC33D410071C39C /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1067F3891EC33D410071C39C /* FirstViewController.swift */; };
+		1068033F1EC940A0006F1DFE /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1068033E1EC940A0006F1DFE /* SWRevealViewController.m */; };
+		106803471EC95706006F1DFE /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106803461EC95706006F1DFE /* MenuViewController.swift */; };
+		106803491EC95A2C006F1DFE /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106803481EC95A2C006F1DFE /* MenuTableViewCell.swift */; };
+		1068034B1EC98720006F1DFE /* MyArticleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1068034A1EC98720006F1DFE /* MyArticleTableViewController.swift */; };
+		1068034D1EC9B978006F1DFE /* MyArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1068034C1EC9B978006F1DFE /* MyArticleTableViewCell.swift */; };
 		10782A831EC2C4CB00919654 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10782A821EC2C4CB00919654 /* DetailViewController.swift */; };
 		108DF0D61EA7523C0056B5FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108DF0D51EA7523C0056B5FA /* AppDelegate.swift */; };
 		108DF0DB1EA7523C0056B5FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 108DF0D91EA7523C0056B5FA /* Main.storyboard */; };
@@ -29,9 +38,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		10333B901EBF6F5D003A5825 /* memberIdCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = memberIdCache.swift; sourceTree = "<group>"; };
+		10333B901EBF6F5D003A5825 /* memberIdCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = memberIdCache.swift; path = Article/memberIdCache.swift; sourceTree = "<group>"; };
+		1055D2451ECC89EC0091D2CD /* MyAdoptionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAdoptionTableViewController.swift; sourceTree = "<group>"; };
+		1055D2491ECC92380091D2CD /* MyAdoptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAdoptionTableViewCell.swift; sourceTree = "<group>"; };
+		105F1B6F1ECC0456001F8D13 /* AddAdoptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAdoptionViewController.swift; sourceTree = "<group>"; };
+		105F1B711ECC3A26001F8D13 /* AdoptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdoptionTableViewCell.swift; sourceTree = "<group>"; };
+		105F1B731ECC4568001F8D13 /* AdoptionDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdoptionDetailViewController.swift; sourceTree = "<group>"; };
 		1067F3831EC2F1380071C39C /* AdoptionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdoptionTableViewController.swift; sourceTree = "<group>"; };
-		1067F3891EC33D410071C39C /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		1068033C1EC9409F006F1DFE /* Article-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Article-Bridging-Header.h"; sourceTree = "<group>"; };
+		1068033D1EC940A0006F1DFE /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		1068033E1EC940A0006F1DFE /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		106803461EC95706006F1DFE /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		106803481EC95A2C006F1DFE /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		1068034A1EC98720006F1DFE /* MyArticleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyArticleTableViewController.swift; sourceTree = "<group>"; };
+		1068034C1EC9B978006F1DFE /* MyArticleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyArticleTableViewCell.swift; sourceTree = "<group>"; };
 		10782A821EC2C4CB00919654 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		108DF0D21EA7523C0056B5FA /* Article.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Article.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		108DF0D51EA7523C0056B5FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -39,7 +59,7 @@
 		108DF0DC1EA7523C0056B5FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		108DF0DF1EA7523C0056B5FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		108DF0E11EA7523C0056B5FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		108DF0E81EA753940056B5FA /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		108DF0E81EA753940056B5FA /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataService.swift; path = Article/DataService.swift; sourceTree = "<group>"; };
 		108DF0EA1EA754B10056B5FA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		108DF0ED1EA755EA0056B5FA /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		108DF0F01EA7592F0056B5FA /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +90,10 @@
 			isa = PBXGroup;
 			children = (
 				10C0B0501EB088A000901059 /* ArticleTableViewCell.swift */,
+				105F1B711ECC3A26001F8D13 /* AdoptionTableViewCell.swift */,
+				1068034C1EC9B978006F1DFE /* MyArticleTableViewCell.swift */,
+				1055D2491ECC92380091D2CD /* MyAdoptionTableViewCell.swift */,
+				106803481EC95A2C006F1DFE /* MenuTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -77,11 +101,12 @@
 		108DF0C91EA7523C0056B5FA = {
 			isa = PBXGroup;
 			children = (
+				1068033D1EC940A0006F1DFE /* SWRevealViewController.h */,
+				1068033E1EC940A0006F1DFE /* SWRevealViewController.m */,
+				1068033C1EC9409F006F1DFE /* Article-Bridging-Header.h */,
 				1050A9161EA7BB1D00FDC9E3 /* View */,
 				108DF0F61EA7966A0056B5FA /* Model */,
 				108DF0EF1EA759070056B5FA /* Controller */,
-				108DF0EC1EA755990056B5FA /* Utility */,
-				108DF0E71EA753120056B5FA /* Service */,
 				108DF0D41EA7523C0056B5FA /* Article */,
 				108DF0D31EA7523C0056B5FA /* Products */,
 				57C3AE148F2965B91A8546E2 /* Pods */,
@@ -100,7 +125,6 @@
 		108DF0D41EA7523C0056B5FA /* Article */ = {
 			isa = PBXGroup;
 			children = (
-				10333B901EBF6F5D003A5825 /* memberIdCache.swift */,
 				108DF0D51EA7523C0056B5FA /* AppDelegate.swift */,
 				108DF0D91EA7523C0056B5FA /* Main.storyboard */,
 				108DF0DC1EA7523C0056B5FA /* Assets.xcassets */,
@@ -112,33 +136,20 @@
 			path = Article;
 			sourceTree = "<group>";
 		};
-		108DF0E71EA753120056B5FA /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				108DF0E81EA753940056B5FA /* DataService.swift */,
-			);
-			name = Service;
-			path = Article;
-			sourceTree = "<group>";
-		};
-		108DF0EC1EA755990056B5FA /* Utility */ = {
-			isa = PBXGroup;
-			children = (
-				108DF0ED1EA755EA0056B5FA /* Constants.swift */,
-			);
-			name = Utility;
-			sourceTree = "<group>";
-		};
 		108DF0EF1EA759070056B5FA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				108DF0F21EA78A9D0056B5FA /* LoginViewController.swift */,
 				108DF0F01EA7592F0056B5FA /* CreateAccountViewController.swift */,
-				1067F3891EC33D410071C39C /* FirstViewController.swift */,
+				106803461EC95706006F1DFE /* MenuViewController.swift */,
 				10FD80D81EADF8E400EB19CA /* ArticleListTableViewController.swift */,
 				108DF0F91EA799C40056B5FA /* AddArticleViewController.swift */,
-				10782A821EC2C4CB00919654 /* DetailViewController.swift */,
 				1067F3831EC2F1380071C39C /* AdoptionTableViewController.swift */,
+				105F1B6F1ECC0456001F8D13 /* AddAdoptionViewController.swift */,
+				105F1B731ECC4568001F8D13 /* AdoptionDetailViewController.swift */,
+				10782A821EC2C4CB00919654 /* DetailViewController.swift */,
+				1068034A1EC98720006F1DFE /* MyArticleTableViewController.swift */,
+				1055D2451ECC89EC0091D2CD /* MyAdoptionTableViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -147,6 +158,9 @@
 			isa = PBXGroup;
 			children = (
 				108DF0F71EA796A70056B5FA /* Article.swift */,
+				10333B901EBF6F5D003A5825 /* memberIdCache.swift */,
+				108DF0ED1EA755EA0056B5FA /* Constants.swift */,
+				108DF0E81EA753940056B5FA /* DataService.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -204,6 +218,7 @@
 					108DF0D11EA7523C0056B5FA = {
 						CreatedOnToolsVersion = 8.3.1;
 						DevelopmentTeam = LGX93JW2QR;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -295,18 +310,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				10782A831EC2C4CB00919654 /* DetailViewController.swift in Sources */,
+				106803471EC95706006F1DFE /* MenuViewController.swift in Sources */,
 				10FD80D91EADF8E400EB19CA /* ArticleListTableViewController.swift in Sources */,
 				10C0B0511EB088A000901059 /* ArticleTableViewCell.swift in Sources */,
 				108DF0F31EA78A9D0056B5FA /* LoginViewController.swift in Sources */,
+				1055D2461ECC89EC0091D2CD /* MyAdoptionTableViewController.swift in Sources */,
 				108DF0FA1EA799C40056B5FA /* AddArticleViewController.swift in Sources */,
-				1067F38A1EC33D410071C39C /* FirstViewController.swift in Sources */,
+				1068034D1EC9B978006F1DFE /* MyArticleTableViewCell.swift in Sources */,
 				108DF0F11EA7592F0056B5FA /* CreateAccountViewController.swift in Sources */,
+				1068033F1EC940A0006F1DFE /* SWRevealViewController.m in Sources */,
 				10333B911EBF6F5D003A5825 /* memberIdCache.swift in Sources */,
+				106803491EC95A2C006F1DFE /* MenuTableViewCell.swift in Sources */,
 				108DF0E91EA753940056B5FA /* DataService.swift in Sources */,
+				105F1B701ECC0456001F8D13 /* AddAdoptionViewController.swift in Sources */,
+				1055D24A1ECC92380091D2CD /* MyAdoptionTableViewCell.swift in Sources */,
+				105F1B741ECC4568001F8D13 /* AdoptionDetailViewController.swift in Sources */,
 				108DF0F81EA796A70056B5FA /* Article.swift in Sources */,
 				108DF0D61EA7523C0056B5FA /* AppDelegate.swift in Sources */,
+				1068034B1EC98720006F1DFE /* MyArticleTableViewController.swift in Sources */,
 				108DF0EE1EA755EA0056B5FA /* Constants.swift in Sources */,
 				1067F3841EC2F1380071C39C /* AdoptionTableViewController.swift in Sources */,
+				105F1B721ECC3A26001F8D13 /* AdoptionTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,12 +456,15 @@
 			baseConfigurationReference = C744161DA94B781EDC887B3E /* Pods-Article.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = LGX93JW2QR;
 				INFOPLIST_FILE = Article/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.LeoChen.Article;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Article-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -447,12 +474,14 @@
 			baseConfigurationReference = 5CE9362F87EB5CDA5F889454 /* Pods-Article.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = LGX93JW2QR;
 				INFOPLIST_FILE = Article/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.LeoChen.Article;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Article-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

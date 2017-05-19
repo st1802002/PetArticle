@@ -10,25 +10,40 @@ import UIKit
 import Firebase
 import BTNavigationDropdownMenu
 
-class ArticleListTableViewController: UITableViewController {
+class ArticleListTableViewController: UITableViewController,UINavigationBarDelegate,UINavigationControllerDelegate {
+
+    @IBOutlet weak var addButton: UIBarButtonItem!
+    @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet var mainTableView: UITableView!
-//    var tempArticleId: [String] = []
     let articleInfo = memberIdCache.sharedInstance()
     var menuView: BTNavigationDropdownMenu!
     
     override func viewDidLoad() {
-
+        articleInfo.currentUser = FIRAuth.auth()?.currentUser
+        print("@@\(String(describing: articleInfo.currentUser))")
+        
         print("viewDidLoad")
+        
+        revealViewController().rearViewRevealWidth = 200
+        menuButton.target = revealViewController()
+        menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
+        
         loadFirebaseData()
+        loadAdoptionData()
+//        print("Hello:\(String(describing: (FIRAuth.auth()?.currentUser?.uid)!))")
+//        articleInfo.userId = (String(describing: (FIRAuth.auth()?.currentUser?.uid)!))
+        self.navigationItem.rightBarButtonItem = nil
+        self.navigationItem.rightBarButtonItem = addButton
     }
+    
 
     override func viewWillAppear(_ animated: Bool) {
-        let items = ["協尋", "領養"]
+        let items = ["民眾協尋資訊", "民眾領養資訊"]
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 0.0/255.0, green:180/255.0, blue:220/255.0, alpha: 1.0)
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
-        menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: "協尋", items: items as [AnyObject])
+        menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: "民眾協尋資訊", items: items as [AnyObject])
         menuView.cellHeight = 50
         menuView.cellBackgroundColor = self.navigationController?.navigationBar.barTintColor
         menuView.cellSelectionColor = UIColor(red: 0.0/255.0, green:160.0/255.0, blue:195.0/255.0, alpha: 1.0)
@@ -44,14 +59,10 @@ class ArticleListTableViewController: UITableViewController {
         menuView.didSelectItemAtIndexHandler = {[weak self] (indexPath: Int) -> () in
             if (indexPath == 1) {
                 self?.performSegue(withIdentifier: "toAdoptionTableViewControllerSegue", sender: nil)
-//                let sb = UIStoryboard(name: "Main", bundle: nil)
-//                let VC1 = sb.instantiateViewController(withIdentifier: "AdoptionTableViewController")
-//                self?.present(VC1, animated: false, completion: nil)
-//                show(VC1, sender: nil)
-//                navigationController?.pushViewController(VC1, animated: true)
             }
         }
         print("viewWillAppear")
+        revealViewController().rightRevealToggle(animated: false) // 登入後 左邊menu縮回去
         self.tableView.reloadData()
     }
 
@@ -65,12 +76,30 @@ class ArticleListTableViewController: UITableViewController {
     func loadFirebaseData () {
         DataService.dataService.ARTICLEID_REF.observe(.value, with: { [weak self] (snapshot) in
             if let uploadDataDic = snapshot.value as? [String:Dictionary<String, Any>] {
+//                print("****************\(uploadDataDic)")
                 self?.articleInfo.fireUploadDic = uploadDataDic
                 if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+//                    print("****************\(snapshots)")
                     var tempArticleId: [String] = []
                     for snap in snapshots {
                         tempArticleId.insert(snap.key, at: 0) //文章ID
+//                        print("****************\(tempArticleId)")
                         self?.articleInfo.articleList = tempArticleId
+                    }
+                }
+                self?.tableView.reloadData()
+            }
+        })
+    }
+    func loadAdoptionData () {
+        DataService.dataService.ADOPTION_REF.observe(.value, with: { [weak self] (snapshot) in
+            if let uploadDataDic = snapshot.value as? [String:Dictionary<String, Any>] {
+                self?.articleInfo.adoptionFireUploadDic = uploadDataDic
+                if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                    var tempAdoption: [String] = []
+                    for snap in snapshots {
+                        tempAdoption.insert(snap.key, at: 0) //文章ID
+                        self?.articleInfo.adoptionList = tempAdoption
                     }
                 }
                 self?.tableView.reloadData()
@@ -81,15 +110,15 @@ class ArticleListTableViewController: UITableViewController {
     func checkImage(indexPathRow:Int) -> UIImage{
         let saveFilePathString = ((self.articleInfo.fireUploadDic?[self.articleInfo.articleList[indexPathRow]])?["missingPetImageFileName"] as? String)!
         let saveFilePath = NSTemporaryDirectory() + "\(saveFilePathString).data"
-        print("儲存位置是：\(saveFilePath)")
+//        print("儲存位置是：\(saveFilePath)")
         let fileManager = FileManager()
         var isDir:ObjCBool = false
         let isExist = fileManager.fileExists(atPath: saveFilePath,isDirectory: &isDir)
         if isExist == true && isDir.boolValue == false{
-            print("該檔案存在，是檔案")
+//            print("該檔案存在，是檔案")
             return UIImage(contentsOfFile: saveFilePath)!
         }else if isExist == false{
-            print("該檔案不存在，下載檔案")
+//            print("該檔案不存在，下載檔案")
             downloadeImage(indexPathRow: indexPathRow,saveFilePath: saveFilePath)
         }
         return UIImage(named: "熊大.png")!
@@ -104,18 +133,18 @@ class ArticleListTableViewController: UITableViewController {
             let task = session.dataTask(with: url, completionHandler: {
                     (data:Data?, response:URLResponse?, error:Error?) in
                     if error != nil{
-                        print("發生錯誤：\(error!.localizedDescription)")
+//                        print("發生錯誤：\(error!.localizedDescription)")
                         return
                     }
                     if let downloadedData = data{
-                        print("暫存資料夾：\(saveFilePath)")
+//                        print("暫存資料夾：\(saveFilePath)")
                         if let downloadeImage = UIImage(data:downloadedData){
                             if let dataToSave = UIImagePNGRepresentation(downloadeImage){
                                 do{
                                     try dataToSave.write(to: URL(fileURLWithPath: saveFilePath), options: [.atomic])
-                                    print("儲存成功")
+//                                    print("儲存成功")
                                 }catch{
-                                    print("無法順利儲存")
+//                                    print("無法順利儲存")
                                 }
                             }
                         }
@@ -174,7 +203,7 @@ class ArticleListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        articleInfo.selectRow = indexPath.row
+        articleInfo.selectArticleRow = indexPath.row
         performSegue(withIdentifier: "toDetailViewControllerSegue", sender: nil)
     }
 }

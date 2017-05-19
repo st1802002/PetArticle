@@ -9,13 +9,13 @@
 import UIKit
 import Firebase
 
-
 class DataService: NSObject{
     static let dataService = DataService()
     
     private var _BASE_REF = FIRDatabase.database().reference(fromURL: "\(BASE_URL)")
     private var _USER_REF = FIRDatabase.database().reference(fromURL: "\(BASE_URL)/UID")
     private var _ARTICLEID_REF = FIRDatabase.database().reference(fromURL: "\(BASE_URL)/ArticleID")
+    private var _ADOPTION_REF = FIRDatabase.database().reference(fromURL: "\(BASE_URL)/Adoption")
     
     var BASE_REF: FIRDatabaseReference {
         return _BASE_REF
@@ -26,6 +26,10 @@ class DataService: NSObject{
     var ARTICLEID_REF: FIRDatabaseReference {
         return _ARTICLEID_REF
     }
+    var ADOPTION_REF: FIRDatabaseReference {
+        return _ADOPTION_REF
+    }
+    
     
     var CURRENT_USER_REF: FIRDatabaseReference {
         let userID = UserDefaults.standard.value(forKey: "uid") as! String
@@ -41,6 +45,9 @@ class DataService: NSObject{
         let firebaseNewArticle = ARTICLEID_REF.childByAutoId()
         firebaseNewArticle.setValue(article)
     }
-
+    func createNewAdoption (_ adoption: Dictionary<String, AnyObject>) {
+        let firebaseNewAdoption = ADOPTION_REF.childByAutoId()
+        firebaseNewAdoption.setValue(adoption)
+    }
 
 }

@@ -1,4 +1,5 @@
 PODS:
+  - BetterSegmentedControl (0.8)
   - BTNavigationDropdownMenu (0.4.1)
   - Firebase (3.16.0):
     - Firebase/Core (= 3.16.0)
@@ -44,6 +45,7 @@ PODS:
   - GTMSessionFetcher/Core (1.1.9)
 
 DEPENDENCIES:
+  - BetterSegmentedControl (~> 0.8)
   - BTNavigationDropdownMenu (from `https://github.com/PhamBaTho/BTNavigationDropdownMenu.git`, branch `swift-3.0`)
   - Firebase
   - Firebase/Auth
@@ -62,6 +64,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/PhamBaTho/BTNavigationDropdownMenu.git
 
 SPEC CHECKSUMS:
+  BetterSegmentedControl: 9194e20687a02dd498a4e542cf523bdd8620fcb7
   BTNavigationDropdownMenu: 093f3cbfad1572f2c222bdf8d17584d1e13380d4
   Firebase: 21bf4a89d3f01bfbe11adc3a5d934a4a3d3a5fd6
   FirebaseAnalytics: 920e46455f27b0a52a80907a6d9b73ee4bd1c635
@@ -73,6 +76,6 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
 
-PODFILE CHECKSUM: aef90c8c871b213273231dcd73ab9e20d03c61ce
+PODFILE CHECKSUM: 774ff06ba2501d270360476da93a6705a3306532
 
 COCOAPODS: 1.2.0

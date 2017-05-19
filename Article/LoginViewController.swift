@@ -14,14 +14,13 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    let uid = memberIdCache.sharedInstance()
+    let articleInfo = memberIdCache.sharedInstance()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextField.delegate = self
         passwordTextField.delegate = self
-
-        
+        articleInfo.userId = ""
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -35,22 +34,21 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func loginButton(_ sender: Any) {
-//        let email = emailTextField.text
-//        let password = passwordTextField.text
-        let email : String! = "123@yahoo.com"
-        let password : String! = "123456"
+        let email = emailTextField.text
+        let password = passwordTextField.text
+//        let email : String! = "456@yahoo.com"
+//        let password : String! = "123456"
         if email != "" && password != "" {
              FIRAuth.auth()?.signIn(withEmail: email!, password: password!, completion: { (user, error) in
                 if error != nil{
                     self.loginFail()
                 }else{
                     if let user = FIRAuth.auth()?.currentUser{
-                        self.uid.userId = user.uid
-                        self.performSegue(withIdentifier: "segue", sender: nil)
+                        self.articleInfo.userId = user.uid
+                        self.dismiss(animated: false, completion: nil)
                     }
                 }
              })
@@ -59,13 +57,15 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         }
     }
             
+    @IBAction func back(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
             
             
     @IBAction func SignUpButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let CreateAccountViewController = storyboard.instantiateViewController(withIdentifier: "CreateAccountViewController")as! CreateAccountViewController
-//        CreateAccountViewController.uid = self.uid.userId
-        self.present(CreateAccountViewController, animated: true, completion: nil)
+        navigationController?.pushViewController(CreateAccountViewController, animated: true)
     }
     
     
@@ -79,8 +79,8 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
                 { (user,error) in
                     if error == nil {
                         if let user = FIRAuth.auth()?.currentUser{
-                            self.uid.userId = user.uid
-                            FIRDatabase.database().reference(withPath: "Online-Status/\(self.uid)").setValue("ON")
+                            self.articleInfo.userId = user.uid
+                            FIRDatabase.database().reference(withPath: "Online-Status/\(self.articleInfo)").setValue("ON")
                             let storyboard = UIStoryboard(name: "Main", bundle: nil)
                             
                             let ArticleListTableViewController = storyboard.instantiateViewController(withIdentifier: "ArticleListTableViewController")as! ArticleListTableViewController
@@ -105,11 +105,6 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         self.present(alertController,animated: true,completion: nil)
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let navConteroller = segue.destination as! UINavigationController
-//        let ArticleListTableViewController = navConteroller.topViewController as! ArticleListTableViewController
-//        ArticleListTableViewController.uid = self.uid.userId
-//    }
     
     
     

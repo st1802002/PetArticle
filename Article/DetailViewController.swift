@@ -18,28 +18,17 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        petNameLabel.text = (self.articleInfo.fireUploadDic?[self.articleInfo.articleList[articleInfo.selectRow]])?["petName"] as? String
-        missingTimeLabel.text = (self.articleInfo.fireUploadDic?[self.articleInfo.articleList[articleInfo.selectRow]])?["missingTime"] as? String
-        missingLocationLabel.text = (self.articleInfo.fireUploadDic?[self.articleInfo.articleList[articleInfo.selectRow]])?["missingLocation"] as? String
-        let saveFilePathString = ((self.articleInfo.fireUploadDic?[self.articleInfo.articleList[articleInfo.selectRow]])?["missingPetImageFileName"] as? String)!
+        petNameLabel.text = (self.articleInfo.fireUploadDic?[self.articleInfo.articleList[articleInfo.selectArticleRow]])?["petName"] as? String
+        missingTimeLabel.text = (self.articleInfo.fireUploadDic?[self.articleInfo.articleList[articleInfo.selectArticleRow]])?["missingTime"] as? String
+        missingLocationLabel.text = (self.articleInfo.fireUploadDic?[self.articleInfo.articleList[articleInfo.selectArticleRow]])?["missingLocation"] as? String
+        
+        let saveFilePathString = ((self.articleInfo.fireUploadDic?[self.articleInfo.articleList[articleInfo.selectArticleRow]])?["missingPetImageFileName"] as? String)!
         let saveFilePath = NSTemporaryDirectory() + "\(saveFilePathString).data"
         petImage.image = UIImage(contentsOfFile: saveFilePath)!
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

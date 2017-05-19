@@ -12,4 +12,5 @@ pod 'Firebase/Auth'
 pod 'Firebase/Storage'
 pod 'Firebase/Database'
 pod 'BTNavigationDropdownMenu', :git => 'https://github.com/PhamBaTho/BTNavigationDropdownMenu.git', :branch => 'swift-3.0'
+pod 'BetterSegmentedControl', '~> 0.8'
 end

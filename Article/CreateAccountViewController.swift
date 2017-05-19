@@ -15,7 +15,7 @@ class CreateAccountViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-//    var uid = ""
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,51 +60,22 @@ class CreateAccountViewController: UIViewController,UITextFieldDelegate {
         }
     }
     
-    @IBAction func cancelCreateAccount(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    
-    
-    
-    
-    
-    
-//    //註冊功能
-//    func signUpFeatures(){
-//        if emailTextField.text != "" || passwordTextField.text != ""{
-//            FIRAuth.auth()?.createUser(withEmail: self.emailTextField.text!, password: passwordTextField.text!, completion: { (user,error) in
-//                
-//                if error == nil {
-//                    if let user = FIRAuth.auth()?.currentUser{
-//                        let uid = user.uid
-//                        FIRDatabase.database().reference(withPath: "ID/\(uid)/Profile/Email").setValue(self.emailTextField.text)
-//                        FIRDatabase.database().reference(withPath: "ID/\(uid)/Profile/Password").setValue(self.passwordTextField.text)
-//                        self.signUpStatus(status: "success")
-//                    }
-//                }else{
-//                    print("輸入資訊錯誤\(error!)")
-//                    self.signUpStatus(status: "fail")
-//                }
-//            })
-//        }
-//    }
-    
+
     //註冊是否成功訊息
     func signUpStatus(status:String) {
         let okAction = UIAlertAction(title: "確認", style: .default) { (action: UIAlertAction!) -> Void in
             if status == "success"{
-                self.performSegue(withIdentifier: "segue", sender: nil)
-//              self.dismiss(animated: true, completion: nil)
+//                self.performSegue(withIdentifier: "segue", sender: nil)
+              self.dismiss(animated: false, completion: nil)
             }
         }
         if status == "success"{
             let alertController = UIAlertController(
                 title: "註冊成功",
-                message: "確認後自動登入",
+                message: "請輸入帳號密碼登入",
                 preferredStyle: .alert)
             alertController.addAction(okAction)
-            self.present(alertController,animated: true,completion: nil)
+            self.present(alertController,animated: false,completion: nil)
             
         }else{
             let alertController = UIAlertController(
@@ -112,7 +83,7 @@ class CreateAccountViewController: UIViewController,UITextFieldDelegate {
                 message: "請重新註冊",
                 preferredStyle: .alert)
             alertController.addAction(okAction)
-            self.present(alertController,animated: true,completion: nil)
+            self.present(alertController,animated: false,completion: nil)
         }
     }
     

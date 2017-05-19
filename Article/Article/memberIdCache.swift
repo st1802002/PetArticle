@@ -11,10 +11,16 @@ import Firebase
 class memberIdCache {
     var userId = ""
     var articleList: [String] = []
+    var adoptionList: [String] = []
     var fireUploadDic: [String:Dictionary<String, Any>]?
-    var selectRow = 0
+    var adoptionFireUploadDic: [String:Dictionary<String, Any>]?
+    var selectArticleRow = 0
+    var selectAdoptionRow = 0
     var currentUser :FIRUser? = nil
+    var myArticle: [String] = []
+    var myAdoption: [String] = []
     
+
     private static var mInstance:memberIdCache?
     static func sharedInstance() -> memberIdCache {
         if mInstance == nil {

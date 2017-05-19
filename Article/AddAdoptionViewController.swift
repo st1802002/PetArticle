@@ -1,21 +1,27 @@
 //
-//  AddArticleViewController.swift
+//  AddAdoptionViewController.swift
 //  Article
 //
-//  Created by 陳柏勳 on 2017/4/19.
+//  Created by 陳柏勳 on 2017/5/17.
 //  Copyright © 2017年 LeoChen. All rights reserved.
 //
 
 import UIKit
 import Firebase
 
-class AddArticleViewController: UIViewController{
-
+class AddAdoptionViewController: UIViewController {
+    
     let uid = memberIdCache.sharedInstance()
     @IBOutlet weak var petName: UITextField!
-    @IBOutlet weak var missingTime: UITextField!
-    @IBOutlet weak var missingLocation: UITextField!
-    @IBOutlet weak var petImageView: UIImageView!
+    @IBOutlet weak var petGender: UITextField!
+    @IBOutlet weak var petAge: UITextField!
+    @IBOutlet weak var petVariety: UITextField!
+    @IBOutlet weak var petImage: UIImageView!
+    @IBOutlet weak var contactName: UITextField!
+    @IBOutlet weak var telephoneNumber: UITextField!
+    @IBOutlet weak var email: UITextField!
+    @IBOutlet weak var remark: UITextField!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,25 +29,38 @@ class AddArticleViewController: UIViewController{
             self.uid.userId = user.uid
         }
         petName.delegate = self
-        missingTime.delegate = self
-        missingLocation.delegate = self
+        petGender.delegate = self
+        petAge.delegate = self
+        petVariety.delegate = self
+        contactName.delegate = self
+        telephoneNumber.delegate = self
+        email.delegate = self
+        remark.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        
     }
     
-
-    @IBAction func submitButton(_ sender: Any) {
-        var newArticle: Dictionary<String, AnyObject> = [:]
+    @IBAction func selectImageButton(_ sender: Any) {
+        selectImage()
+    }
+    
+    @IBAction func sentOutButton(_ sender: Any) {
+        var newAdoption: Dictionary<String, AnyObject> = [:]
         if (self.petName.text != "" &&
-            self.missingTime.text != "" &&
-            self.missingLocation.text != "" &&
-            self.petImageView.image != nil)
+            self.petGender.text != "" &&
+            self.petAge.text != "" &&
+            self.petVariety.text != "" &&
+            self.contactName.text != "" &&
+            self.telephoneNumber.text != "" &&
+            self.email.text != "" &&
+            self.petImage.image != nil)
         {
-            let resizePetImage = resizeImage(image: petImageView.image!, targetSize: CGSize(width: 120, height: 100))
+            let resizePetImage = resizeImage(image: petImage.image!, targetSize: CGSize(width: 120, height: 100))
             let uniqueString = NSUUID().uuidString
-            let storageRef = FIRStorage.storage().reference().child("MissingPetImage").child("\(uniqueString).png")
+            let storageRef = FIRStorage.storage().reference().child(" AddAdoptionPetImage").child("\(uniqueString).png")
             if let uploadData = UIImagePNGRepresentation(resizePetImage) {
                 storageRef.put(uploadData, metadata: nil, completion: { (data, error) in
                     if error != nil {
@@ -50,39 +69,34 @@ class AddArticleViewController: UIViewController{
                     }
                     if let uploadImageUrl = data?.downloadURL()?.absoluteString {
                         print("Photo Url: \(uploadImageUrl)")
-                        newArticle = [
+                        newAdoption = [
                             "petName": self.petName.text! as AnyObject,
-                            "missingTime": self.missingTime.text! as AnyObject,
-                            "missingLocation": self.missingLocation.text! as AnyObject,
-                            "missingPetImageURL": uploadImageUrl as AnyObject,
-                            "missingPetImageFileName": uniqueString as AnyObject,
+                            "petGender": self.petGender.text! as AnyObject,
+                            "petAge": self.petAge.text! as AnyObject,
+                            "petVariety": self.petVariety.text! as AnyObject,
+                            "contactName": self.contactName.text! as AnyObject,
+                            "telephoneNumber": self.telephoneNumber.text! as AnyObject,
+                            "email": self.email.text! as AnyObject,
+                            "remark": self.remark.text! as AnyObject,
+                            "AdoptionPetImageURL": uploadImageUrl as AnyObject,
+                            "AdoptionPetImageFileName": uniqueString as AnyObject,
                             "UID": self.uid.userId as AnyObject
                         ]
-                        DataService.dataService.createNewArticle(newArticle)
-//                        print("圖片已儲存")
+                        DataService.dataService.createNewAdoption(newAdoption)
+                        //                        print("圖片已儲存")
                     }
                 })
             }
             self.navigationController?.popViewController(animated: true)
         }
     }
-    
-    @IBAction func selectImageButton(_ sender: Any) {
-        selectImage()
-    }
-    
 }
 
-
-
-
-
-
-extension AddArticleViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate,UITextFieldDelegate {
+extension AddAdoptionViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate,UITextFieldDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-
+        
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            petImageView.image = pickedImage
+            petImage.image = pickedImage
         }
         dismiss(animated: true, completion: nil)
     }
@@ -111,9 +125,7 @@ extension AddArticleViewController: UIImagePickerControllerDelegate, UINavigatio
         imagePickerAlertController.addAction(cancelAction)
         present(imagePickerAlertController, animated: true, completion: nil)
     }
-    
-    
-    
+  
     func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
         let size = image.size
         
@@ -147,6 +159,4 @@ extension AddArticleViewController: UIImagePickerControllerDelegate, UINavigatio
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-    
 }
-
